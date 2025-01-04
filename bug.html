@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text should be visible.
+  </div>
+  <script>
+    //Bug: Incorrectly using innerHTML to set content of a non-existent element
+    document.getElementById('myDiv').innerHTML = "<p>Paragraph added using innerHTML.</p>";
+    document.getElementById('nonExistent').innerHTML = "<p>This line will cause an error.</p>";
+  </script>
+</body>
+</html>
