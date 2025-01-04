@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug Solution</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text should be visible.
+  </div>
+  <div id="nonExistent"></div> 
+  <script>
+    // Solution: Check if element exists before using innerHTML
+    const myDiv = document.getElementById('myDiv');
+    const nonExistentDiv = document.getElementById('nonExistent');
+
+    if (myDiv) {
+        myDiv.innerHTML = "<p>Paragraph added using innerHTML.</p>";
+    }
+
+    if (nonExistentDiv) {
+        nonExistentDiv.innerHTML = "<p>This line will NOT cause an error.</p>";
+    } else {
+        console.log("Element 'nonExistent' not found. Creating it.");
+        const newDiv = document.createElement('div');
+        newDiv.id = 'nonExistent';
+        newDiv.innerHTML = "<p>This line will NOT cause an error.</p>";
+        document.body.appendChild(newDiv);
+    }
+  </script>
+</body>
+</html>
